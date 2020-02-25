@@ -13,8 +13,10 @@ License: GPL2
 add_action('admin_bar_menu', 'cache_add_item', 100);
 
 function cache_add_item( $admin_bar ){
-  global $pagenow;
-  $admin_bar->add_menu( array( 'id'=>'cache-purge','title'=>'Cache Purge','href'=>'#' ) );
+  if(is_admin()) {
+    global $pagenow;
+    $admin_bar->add_menu( array( 'id'=>'cache-purge','title'=>'Cache Purge','href'=>'#' ) );
+  }
 }
 
 
